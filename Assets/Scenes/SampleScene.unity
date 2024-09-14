@@ -266,6 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 559850367}
   - component: {fileID: 559850366}
+  - component: {fileID: 559850368}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -289,6 +290,7 @@ MonoBehaviour:
   playerTile: {fileID: 1397358035420427211, guid: 9e70ffb21adac9c4f94a91e3c024ddb6, type: 3}
   exitTile: {fileID: 1358132483193449218, guid: 4774470d14339294980807b06010c289, type: 3}
   surrondingWallTile: {fileID: 1358132483193449218, guid: 669a034d3dea54f43946cc15d9521fb4, type: 3}
+  woodenWallTile: {fileID: 1358132483193449218, guid: c96b4a4b52b292347b80aba18f65184f, type: 3}
   levels:
   - {fileID: 4900000, guid: 03f431c27a2757a4889f9a9afff042b9, type: 3}
 --- !u!4 &559850367
@@ -306,6 +308,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &559850368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559850365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb2cea52d490ec4397ac212ea50024b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GridManager: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0

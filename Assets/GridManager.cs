@@ -5,11 +5,23 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    [SerializeField] private GameTile tile, playerTile, exitTile, surrondingWallTile;
+    [SerializeField] private GameTile tile, playerTile, exitTile, surrondingWallTile, woodenWallTile;
 
     [SerializeField] private List<TextAsset> levels;
 
-    private Dictionary<Vector2, GameTile> tileGrid = new();
+    private readonly Dictionary<Vector2, GameTile> tileGrid = new();
+
+    public GameTile ProbeLocation(Vector2 location)
+    {
+        if (tileGrid.ContainsKey(location))
+        {
+            return tileGrid[location];
+        }
+        else
+        {
+            return null;
+        }
+    }
 
     private void Start()
     {
@@ -24,7 +36,7 @@ public class GridManager : MonoBehaviour
 
         var row_data = lv_data.Split('\n').Reverse().ToArray();
 
-        var width = row_data[0].Length;
+        var width = row_data[0].Split(',').Length;
 
         for (int y = -1; y < row_data.Length + 1; y++)
         {
@@ -42,7 +54,7 @@ public class GridManager : MonoBehaviour
         {
             var col_data = row_data[y].Split(',');
 
-            for (int x = 0; x < width; x++)
+            for (int x = 0; x < col_data.Length; x++)
             {
                 var tile_info = col_data[x].Trim();
                 GameTile tileInstance;
@@ -56,9 +68,14 @@ public class GridManager : MonoBehaviour
                         break;
 
                     case "E":
-                        print("Exit");
                         tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
                         tileInstance = Instantiate(exitTile,
+                            Vector2.zero, Quaternion.identity);
+                        break;
+
+                    case "W":
+                        tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
+                        tileInstance = Instantiate(woodenWallTile,
                             Vector2.zero, Quaternion.identity);
                         break;
 

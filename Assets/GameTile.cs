@@ -4,6 +4,7 @@ public abstract class GameTile : MonoBehaviour
 {
     protected SpriteRenderer spriteRenderer;
     protected int x, y;
+    public TileType TileType = TileType.None;
 
     public virtual void Initialise(int x, int y)
     {
@@ -22,4 +23,13 @@ public abstract class GameTile : MonoBehaviour
     protected virtual void Update()
     {
     }
+}
+
+public enum TileType
+{
+    None,
+    Player,
+    Background,
+    Border,
+    Exit
 }
