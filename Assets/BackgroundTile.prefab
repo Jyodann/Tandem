@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5673766443112633148}
   - component: {fileID: 7108037914424230836}
-  - component: {fileID: 2269296603931443868}
+  - component: {fileID: 6064689154746188920}
   m_Layer: 0
-  m_Name: GameTile
+  m_Name: BackgroundTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2269296603931443868
+--- !u!114 &6064689154746188920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,6 +96,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8488834340193745793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 974baf5ec4e238741b0d7a1717f4d8f7, type: 3}
+  m_Script: {fileID: 11500000, guid: d1785d3c8f7fffe40a2ac1c772f08471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseColor: {r: 0.08866978, g: 0, b: 1, a: 1}
+  offsetColor: {r: 0.15890081, g: 0.109640405, b: 0.6679245, a: 1}

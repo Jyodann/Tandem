@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GameTile : MonoBehaviour
+public abstract class GameTile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    protected SpriteRenderer spriteRenderer;
+    protected int x, y;
+
+    public virtual void Initialise(int x, int y)
     {
-        
+        this.x = x;
+        this.y = y;
+    }
+
+    // Start is called before the first frame update
+    protected virtual void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        transform.position = new Vector2(x, y);
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        
     }
 }
