@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    [SerializeField] private int width, height;
-
-    [SerializeField] private GameTile tile;
+    [SerializeField] private GameTile tile, playerTile, exitTile, surrondingWallTile;
 
     [SerializeField] private List<TextAsset> levels;
 
@@ -19,15 +18,51 @@ public class GridManager : MonoBehaviour
     {
         var currentLevel = levels[lv_index];
 
-        print(currentLevel.text);
+        var lv_data = currentLevel.text;
 
-        for (int x = 0; x < width; x++)
+        var row_data = lv_data.Split('\n').Reverse().ToArray();
+
+        var width = row_data[0].Length;
+
+        for (int y = -1; y < row_data.Length + 1; y++)
         {
-            for (int y = 0; y < height; y++)
+            for (int x = -1; x < width + 1; x++)
             {
-                var tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
-                tileInstance.name = $"Tile {x} {y}";
+                var tileInstance = Instantiate(surrondingWallTile, new Vector2(x, y), Quaternion.identity);
                 tileInstance.transform.parent = transform;
+                tileInstance.Initialise(x, y);
+            }
+        }
+
+        for (int y = 0; y < row_data.Length; y++)
+        {
+            var col_data = row_data[y].Split(',');
+
+            for (int x = 0; x < width; x++)
+            {
+                var tile_info = col_data[x].Trim();
+                var tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
+                tileInstance.name = $"Tile {x} {y} - {tile_info}";
+                tileInstance.transform.parent = transform;
+
+                switch (tile_info)
+                {
+                    case "P":
+                        var playerTileInstance = Instantiate(playerTile,
+                            Vector2.zero, Quaternion.identity);
+                        playerTileInstance.Initialise(x, y);
+                        break;
+
+                    case "E":
+                        print("Exit");
+                        var exitTileInstance = Instantiate(exitTile,
+                            Vector2.zero, Quaternion.identity);
+                        exitTileInstance.Initialise(x, y);
+                        break;
+
+                    default:
+                        break;
+                }
 
                 tileInstance.Initialise(x, y);
             }
