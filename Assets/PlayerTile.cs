@@ -12,5 +12,24 @@ public class PlayerTile : GameTile
     // Update is called once per frame
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            transform.position += Vector3.up;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            transform.position += Vector3.down;
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            transform.position += Vector3.left;
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            transform.position += Vector3.right;
+        }
     }
 }

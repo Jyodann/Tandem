@@ -285,9 +285,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befdc961690bb714c88ecdcc3edade35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 5
-  height: 5
   tile: {fileID: 6064689154746188920, guid: e3de1d50c960b5c41bd39722d6b4a34a, type: 3}
+  playerTile: {fileID: 1397358035420427211, guid: 9e70ffb21adac9c4f94a91e3c024ddb6, type: 3}
+  exitTile: {fileID: 1358132483193449218, guid: 4774470d14339294980807b06010c289, type: 3}
+  surrondingWallTile: {fileID: 1358132483193449218, guid: 669a034d3dea54f43946cc15d9521fb4, type: 3}
+  levels:
+  - {fileID: 4900000, guid: 03f431c27a2757a4889f9a9afff042b9, type: 3}
 --- !u!4 &559850367
 Transform:
   m_ObjectHideFlags: 0

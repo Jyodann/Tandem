@@ -9,6 +9,8 @@ public class GridManager : MonoBehaviour
 
     [SerializeField] private List<TextAsset> levels;
 
+    private Dictionary<Vector2, GameTile> tileGrid = new();
+
     private void Start()
     {
         GenerateGrid(0);
@@ -31,6 +33,8 @@ public class GridManager : MonoBehaviour
                 var tileInstance = Instantiate(surrondingWallTile, new Vector2(x, y), Quaternion.identity);
                 tileInstance.transform.parent = transform;
                 tileInstance.Initialise(x, y);
+
+                tileGrid[new Vector2(x, y)] = tileInstance;
             }
         }
 
@@ -41,30 +45,33 @@ public class GridManager : MonoBehaviour
             for (int x = 0; x < width; x++)
             {
                 var tile_info = col_data[x].Trim();
-                var tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
-                tileInstance.name = $"Tile {x} {y} - {tile_info}";
-                tileInstance.transform.parent = transform;
+                GameTile tileInstance;
 
                 switch (tile_info)
                 {
                     case "P":
-                        var playerTileInstance = Instantiate(playerTile,
+                        tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
+                        tileInstance = Instantiate(playerTile,
                             Vector2.zero, Quaternion.identity);
-                        playerTileInstance.Initialise(x, y);
                         break;
 
                     case "E":
                         print("Exit");
-                        var exitTileInstance = Instantiate(exitTile,
+                        tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
+                        tileInstance = Instantiate(exitTile,
                             Vector2.zero, Quaternion.identity);
-                        exitTileInstance.Initialise(x, y);
                         break;
 
                     default:
+                        tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
+
                         break;
                 }
 
+                tileInstance.name = $"Tile {x} {y} - {tile_info}";
+                tileInstance.transform.parent = transform;
                 tileInstance.Initialise(x, y);
+                tileGrid[new Vector2(x, y)] = tileInstance;
             }
         }
     }
