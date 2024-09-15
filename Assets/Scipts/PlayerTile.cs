@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using static GridManager;
 
@@ -25,15 +22,32 @@ public class PlayerTile : GameTile
         switch (action)
         {
             case CombinedAction.SHOOT:
+                MovePlayer(targetLocation);
                 break;
             case CombinedAction.MOVE:
                 MovePlayer(targetLocation);
                 break;
             case CombinedAction.SWAP_RED_BLUE:
-
+                MovePlayer(targetLocation);
+                SwapColor();
                 break;
             default:
                 break;
+        }
+    }
+
+    private void SwapColor()
+    {
+        var gridManager = GameManager.Instance.GridManager;
+
+        foreach (ColouredBarrierTile item in gridManager.redTiles)
+        {
+            item.SwapTile();
+        }
+
+        foreach (ColouredBarrierTile item in gridManager.blueTiles)
+        {
+            item.SwapTile();
         }
     }
 
@@ -94,7 +108,20 @@ public class PlayerTile : GameTile
                 ExecuteAction(actionToExecute, finalPos);
                 print("You Win!");
                 break;
-
+            case TileType.ColouredBarrierBlue:
+                if (((ColouredBarrierTile)probedTile).isEnabled)
+                {
+                    MovePlayer(finalPos);
+                    ExecuteAction(actionToExecute, finalPos);
+                }
+                break;
+            case TileType.ColouredBarrierRed:
+                if (((ColouredBarrierTile)probedTile).isEnabled)
+                {
+                    MovePlayer(finalPos);
+                    ExecuteAction(actionToExecute, finalPos);
+                }
+                break;
             default:
                 break;
         }

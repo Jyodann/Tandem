@@ -39,6 +39,7 @@ public class GridManager : MonoBehaviour
     private void Start()
     {
         GenerateGrid(levelId);
+        GameManager.Instance.PanelManager.DisplayItems();
     }
 
     [Serializable]
