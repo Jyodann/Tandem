@@ -64,7 +64,7 @@ public class GridManager : MonoBehaviour
                     case "P":
                         tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
                         tileInstance = Instantiate(playerTile,
-                            Vector2.zero, Quaternion.identity);
+                            Vector2.zero, Quaternion.Euler(0, 0, 180f));
                         break;
 
                     case "E":

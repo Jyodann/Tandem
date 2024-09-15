@@ -31,5 +31,6 @@ public enum TileType
     Player,
     Background,
     Border,
-    Exit
+    Exit,
+    ColouredBarrier
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerTile : GameTile
 {
     // Start is called before the first frame update
-    private void Start()
+    protected override void Start()
     {
     }
 
@@ -15,7 +15,7 @@ public class PlayerTile : GameTile
     }
 
     // Update is called once per frame
-    private void Update()
+    protected override void Update()
     {
         var finalPos = transform.position;
         if (Input.GetKeyDown(KeyCode.W))
