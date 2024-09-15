@@ -1,14 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.MPE;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    [SerializeField] private GameTile tile, playerTile, exitTile, surrondingWallTile, woodenWallTile, enemyTile;
+    [SerializeField] private int levelId = 0;
+    [SerializeField]
+    private GameTile tile, playerTile, exitTile,
+        surrondingWallTile, woodenWallTile, enemyTile, blueTile, redTile;
 
-    [SerializeField] private List<TextAsset> levels;
+    [SerializeField] public List<LevelData> levels;
 
+    public List<GameTile> blueTiles;
+    public List<GameTile> redTiles;
     private readonly Dictionary<Vector2, GameTile> tileGrid = new();
 
     public GameTile ProbeLocation(Vector2 location)
@@ -23,18 +30,45 @@ public class GridManager : MonoBehaviour
         }
     }
 
+
+    public LevelData GetLevelData()
+    {
+        return levels[levelId];
+    }
+
     private void Start()
     {
-        GenerateGrid(0);
+        GenerateGrid(levelId);
+    }
+
+    [Serializable]
+    public struct LevelData
+    {
+        public TextAsset levelLayoutData;
+        public CombinedAction leftArrowAction;
+        public CombinedAction rightArrowAction;
+        public CombinedAction upArrowAction;
+        public CombinedAction downArrowAction;
+    }
+
+    public enum CombinedAction
+    {
+        NONE,
+        MOVE,
+        SHOOT,
+
+        SWAP_RED_BLUE
     }
 
     private void GenerateGrid(int lv_index)
     {
+        blueTiles = new();
+        redTiles = new();
         Transform playerLocation = null;
         List<Transform> enemyLocations = new();
         var currentLevel = levels[lv_index];
 
-        var lv_data = currentLevel.text;
+        var lv_data = currentLevel.levelLayoutData.text;
 
         var row_data = lv_data.Split('\n').Reverse().ToArray();
 
@@ -67,6 +101,18 @@ public class GridManager : MonoBehaviour
 
                 switch (tile_info)
                 {
+                    case "B":
+                        tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
+                        tileInstance = Instantiate(blueTile,
+                            Vector2.zero, Quaternion.identity);
+                        blueTiles.Add(tileInstance);
+                        break;
+                    case "R":
+                        tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
+                        tileInstance = Instantiate(redTile,
+                            Vector2.zero, Quaternion.identity);
+                        redTiles.Add(tileInstance);
+                        break;
                     case "P":
                         tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
                         tileInstance = Instantiate(playerTile,

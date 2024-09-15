@@ -1,41 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static GridManager;
 
 public class PlayerTile : GameTile
 {
+    LevelData currentLevelData;
     // Start is called before the first frame update
     protected override void Start()
     {
+        currentLevelData = GameManager.Instance.GridManager.GetLevelData();
     }
 
-    private void MovePlayer(Vector2 pos)
+    private void MovePlayer(Vector3 pos)
     {
+        var directionToFace = transform.position - pos;
+        transform.up = directionToFace;
         transform.position = pos;
+    }
+
+    private void ExecuteAction(CombinedAction action, Vector3 targetLocation)
+    {
+        switch (action)
+        {
+            case CombinedAction.SHOOT:
+                break;
+            case CombinedAction.MOVE:
+                MovePlayer(targetLocation);
+                break;
+            case CombinedAction.SWAP_RED_BLUE:
+
+                break;
+            default:
+                break;
+        }
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         var finalPos = transform.position;
-        if (Input.GetKeyDown(KeyCode.W))
+        CombinedAction actionToExecute = CombinedAction.NONE;
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             finalPos += Vector3.up;
+            actionToExecute = currentLevelData.upArrowAction;
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             finalPos += Vector3.down;
+            actionToExecute = currentLevelData.downArrowAction;
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             finalPos += Vector3.left;
+            actionToExecute = currentLevelData.leftArrowAction;
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             finalPos += Vector3.right;
+            actionToExecute = currentLevelData.rightArrowAction;
         }
 
         if (finalPos == transform.position)
@@ -51,11 +79,11 @@ public class PlayerTile : GameTile
                 break;
 
             case TileType.Player:
-                MovePlayer(finalPos);
+                ExecuteAction(actionToExecute, finalPos);
                 break;
 
             case TileType.Background:
-                MovePlayer(finalPos);
+                ExecuteAction(actionToExecute, finalPos);
                 break;
 
             case TileType.Border:
@@ -63,6 +91,7 @@ public class PlayerTile : GameTile
 
             case TileType.Exit:
                 MovePlayer(finalPos);
+                ExecuteAction(actionToExecute, finalPos);
                 print("You Win!");
                 break;
 
