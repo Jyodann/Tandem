@@ -114,6 +114,7 @@ public class PlayerTile : GameTile
                     MovePlayer(finalPos);
                     ExecuteAction(actionToExecute, finalPos);
                 }
+
                 break;
             case TileType.ColouredBarrierRed:
                 if (((ColouredBarrierTile)probedTile).isEnabled)
@@ -121,6 +122,7 @@ public class PlayerTile : GameTile
                     MovePlayer(finalPos);
                     ExecuteAction(actionToExecute, finalPos);
                 }
+
                 break;
             default:
                 break;

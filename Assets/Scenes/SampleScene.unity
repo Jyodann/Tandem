@@ -372,8 +372,8 @@ MonoBehaviour:
   redTile: {fileID: 6684049733525510185, guid: c89f7b4388f7f4e4391a186bb7c505eb, type: 3}
   levels:
   - levelLayoutData: {fileID: 4900000, guid: 03f431c27a2757a4889f9a9afff042b9, type: 3}
-    leftArrowAction: 2
-    rightArrowAction: 1
+    leftArrowAction: 0
+    rightArrowAction: 3
     upArrowAction: 1
     downArrowAction: 1
   blueTiles: []
