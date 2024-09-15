@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    [SerializeField] private GameTile tile, playerTile, exitTile, surrondingWallTile, woodenWallTile;
+    [SerializeField] private GameTile tile, playerTile, exitTile, surrondingWallTile, woodenWallTile, enemyTile;
 
     [SerializeField] private List<TextAsset> levels;
 
@@ -30,6 +30,8 @@ public class GridManager : MonoBehaviour
 
     private void GenerateGrid(int lv_index)
     {
+        Transform playerLocation = null;
+        List<Transform> enemyLocations = new();
         var currentLevel = levels[lv_index];
 
         var lv_data = currentLevel.text;
@@ -38,6 +40,10 @@ public class GridManager : MonoBehaviour
 
         var width = row_data[0].Split(',').Length;
 
+        var cam_loc_y = row_data.Length;
+        var cam_loc_x = row_data[0].Split(',').Length;
+
+        Camera.main.transform.position = new Vector3(cam_loc_x / 2, cam_loc_y / 2, -10f);
         for (int y = -1; y < row_data.Length + 1; y++)
         {
             for (int x = -1; x < width + 1; x++)
@@ -65,9 +71,10 @@ public class GridManager : MonoBehaviour
                         tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
                         tileInstance = Instantiate(playerTile,
                             Vector2.zero, Quaternion.Euler(0, 0, 180f));
+                        playerLocation = tileInstance.transform;
                         break;
 
-                    case "E":
+                    case "X":
                         tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
                         tileInstance = Instantiate(exitTile,
                             Vector2.zero, Quaternion.identity);
@@ -78,7 +85,12 @@ public class GridManager : MonoBehaviour
                         tileInstance = Instantiate(woodenWallTile,
                             Vector2.zero, Quaternion.identity);
                         break;
-
+                    case "E":
+                        tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
+                        tileInstance = Instantiate(enemyTile,
+                            Vector2.zero, Quaternion.identity);
+                        enemyLocations.Add(tileInstance.transform);
+                        break;
                     default:
                         tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
 
@@ -90,6 +102,11 @@ public class GridManager : MonoBehaviour
                 tileInstance.Initialise(x, y);
                 tileGrid[new Vector2(x, y)] = tileInstance;
             }
+        }
+
+        foreach (var item in enemyLocations)
+        {
+            item.transform.up = item.position - playerLocation.position;
         }
     }
 }

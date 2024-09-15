@@ -10,13 +10,14 @@ public abstract class GameTile : MonoBehaviour
     {
         this.x = x;
         this.y = y;
+        transform.position = new Vector2(x, y);
     }
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        transform.position = new Vector2(x, y);
+
     }
 
     // Update is called once per frame
@@ -32,5 +33,7 @@ public enum TileType
     Background,
     Border,
     Exit,
-    ColouredBarrier
+    ColouredBarrierRed,
+    ColouredBarrierBlue,
+    EnemyTile
 }
