@@ -43,7 +43,7 @@ public class GridManager : MonoBehaviour
         var cam_loc_y = row_data.Length;
         var cam_loc_x = row_data[0].Split(',').Length;
 
-        Camera.main.transform.position = new Vector3(cam_loc_x / 2, cam_loc_y / 2, -10f);
+        Camera.main.transform.position = new Vector3(-1f, cam_loc_y / 2, -10f);
         for (int y = -1; y < row_data.Length + 1; y++)
         {
             for (int x = -1; x < width + 1; x++)
