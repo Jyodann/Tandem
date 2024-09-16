@@ -370,15 +370,16 @@ MonoBehaviour:
   enemyTile: {fileID: 3573628377786471704, guid: 64f5a20edd35fc441bc925f41a37d736, type: 3}
   blueTile: {fileID: -4460520423386026460, guid: a6d15654499c8e4488831c8d23ee2aa7, type: 3}
   redTile: {fileID: 6684049733525510185, guid: c89f7b4388f7f4e4391a186bb7c505eb, type: 3}
-  civillianTile: {fileID: 3573628377786471704, guid: d1aad78c115762847bd8147f1b61bf0a, type: 3}
+  civillianTile: {fileID: 1234667000513435616, guid: d1aad78c115762847bd8147f1b61bf0a, type: 3}
   levels:
-  - levelLayoutData: {fileID: 4900000, guid: cd9ba024a13c033409154cbc3bb512ba, type: 3}
-    leftArrowAction: 3
-    rightArrowAction: 1
-    upArrowAction: 3
+  - levelLayoutData: {fileID: 4900000, guid: 563a50c4ec28c1148adeec5448346c74, type: 3}
+    leftArrowAction: 2
+    rightArrowAction: 2
+    upArrowAction: 0
     downArrowAction: 1
   blueTiles: []
   redTiles: []
+  NumberOfEnemies: 0
 --- !u!4 &559850367
 Transform:
   m_ObjectHideFlags: 0
@@ -837,7 +838,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Available Actions
+  m_text: 'Actions
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 77b13feeec6933b4abeb55c44586abad, type: 2}
   m_sharedMaterial: {fileID: 2051894040996102838, guid: 77b13feeec6933b4abeb55c44586abad, type: 2}
@@ -864,7 +867,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23.9
+  m_fontSize: 48.55
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

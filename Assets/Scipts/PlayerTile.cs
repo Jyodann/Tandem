@@ -126,7 +126,16 @@ public class PlayerTile : GameTile
             case TileType.Exit:
                 MovePlayer(finalPos);
                 ExecuteAction(actionToExecute, finalPos);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+                if (GameManager.Instance.GridManager.NumberOfEnemies != 0)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                }
+                else
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+
                 break;
             case TileType.ColouredBarrierBlue:
                 if (((ColouredBarrierTile)probedTile).isEnabled)

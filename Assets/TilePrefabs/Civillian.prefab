@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9154800752214882304}
   - component: {fileID: 536036336195227965}
-  - component: {fileID: 3573628377786471704}
   - component: {fileID: 8902560141023427269}
   - component: {fileID: 3460185945748175474}
+  - component: {fileID: 1234667000513435616}
   m_Layer: 0
   m_Name: Civillian
   m_TagString: Untagged
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -5715311728165841393, guid: d5117ed765b62474fb3d50b3d2882845, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d5117ed765b62474fb3d50b3d2882845, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,19 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3573628377786471704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2887034120003153793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bc9fe076bb6bb949a5de7762ebe3ea4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TileType: 7
 --- !u!61 &8902560141023427269
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -136,17 +123,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0050115585, y: -0.042597845}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8195851, y: 0.8045504}
   m_EdgeRadius: 0
 --- !u!50 &3460185945748175474
 Rigidbody2D:
@@ -175,3 +162,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1234667000513435616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2887034120003153793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b10c9fc9707d594494d78d907324e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileType: 7

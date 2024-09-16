@@ -13,6 +13,12 @@ EditorBuildSettings:
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Scenes/Level2.unity
+    guid: 7c990074827ddba4cbbcb293e48c12ce
+  - enabled: 1
+    path: Assets/Scenes/Level3_.unity
     guid: 7a7fabaaee594f84f9343a55a5f40fe4
+  - enabled: 1
+    path: Assets/Scenes/ThanksForPlaying.unity
+    guid: d8c14b400a652694490859ce4d08dc7c
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

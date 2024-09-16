@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Civillian : GameTile
 {
@@ -12,6 +13,8 @@ public class Civillian : GameTile
 
             Destroy(gameObject);
             Destroy(bullet);
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

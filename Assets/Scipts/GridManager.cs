@@ -16,6 +16,8 @@ public class GridManager : MonoBehaviour
 
     public List<GameTile> blueTiles;
     public List<GameTile> redTiles;
+
+    public int NumberOfEnemies = 0;
     private readonly Dictionary<Vector2, GameTile> tileGrid = new();
 
     public GameTile ProbeLocation(Vector2 location)
@@ -147,6 +149,7 @@ public class GridManager : MonoBehaviour
                         tileInstance = Instantiate(enemyTile,
                             Vector2.zero, Quaternion.identity);
                         enemyLocations.Add(tileInstance.transform);
+                        NumberOfEnemies++;
                         break;
                     default:
                         tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
