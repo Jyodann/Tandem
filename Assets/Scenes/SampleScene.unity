@@ -374,7 +374,7 @@ MonoBehaviour:
   - levelLayoutData: {fileID: 4900000, guid: 03f431c27a2757a4889f9a9afff042b9, type: 3}
     leftArrowAction: 0
     rightArrowAction: 3
-    upArrowAction: 1
+    upArrowAction: 2
     downArrowAction: 1
   blueTiles: []
   redTiles: []
@@ -699,8 +699,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -170.60999, y: -15.442993}
-  m_SizeDelta: {x: -551.23, y: -82.67}
+  m_AnchoredPosition: {x: -210, y: -15.442993}
+  m_SizeDelta: {x: -630, y: -82.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1530225673
 MonoBehaviour:
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 50
+    m_Left: 10
     m_Right: 25
     m_Top: 25
     m_Bottom: 0
@@ -814,7 +814,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 105, y: -6.777954}
-  m_SizeDelta: {x: 248.77, y: 50}
+  m_SizeDelta: {x: 170, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1833740245
 MonoBehaviour:
@@ -863,10 +863,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 22.5
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0

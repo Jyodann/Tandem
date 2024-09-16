@@ -1,8 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using static GridManager;
 
 public class PlayerTile : GameTile
 {
+    [SerializeField] Bullet bulletPrefab;
+
+    [SerializeField] List<Transform> locationOfBullet;
     LevelData currentLevelData;
     // Start is called before the first frame update
     protected override void Start()
@@ -22,7 +27,9 @@ public class PlayerTile : GameTile
         switch (action)
         {
             case CombinedAction.SHOOT:
+                Shoot(targetLocation);
                 MovePlayer(targetLocation);
+
                 break;
             case CombinedAction.MOVE:
                 MovePlayer(targetLocation);
@@ -34,6 +41,18 @@ public class PlayerTile : GameTile
             default:
                 break;
         }
+    }
+
+    private void Shoot(Vector3 posToFace)
+    {
+
+        var location = locationOfBullet[Random.Range(0, locationOfBullet.Count)];
+        var directionToFace = transform.position - posToFace;
+        var prefab = Instantiate(bulletPrefab, location.position, Quaternion.identity);
+
+        prefab.transform.up = directionToFace;
+        var rb2d = prefab.GetComponent<Rigidbody2D>();
+        rb2d.velocity = prefab.transform.up * -20f;
     }
 
     private void SwapColor()

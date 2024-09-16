@@ -30,6 +30,11 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    public void SetLocationType(Vector2 location)
+    {
+        tileGrid[location] = tile;
+    }
+
 
     public LevelData GetLevelData()
     {

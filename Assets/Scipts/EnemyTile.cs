@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class EnemyTile : GameTile
 {
-    // Start is called before the first frame update
-    void Start()
+    void OnTriggerEnter2D(Collider2D collider2D)
     {
+        if (collider2D.TryGetComponent<Bullet>(out var bullet))
+        {
+            GameManager.Instance.GridManager.SetLocationType(transform.position);
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+            Destroy(gameObject);
+            Destroy(bullet);
+        }
     }
 }
