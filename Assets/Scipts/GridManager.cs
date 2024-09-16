@@ -10,7 +10,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private int levelId = 0;
     [SerializeField]
     private GameTile tile, playerTile, exitTile,
-        surrondingWallTile, woodenWallTile, enemyTile, blueTile, redTile;
+        surrondingWallTile, woodenWallTile, enemyTile, blueTile, redTile, civillianTile;
 
     [SerializeField] public List<LevelData> levels;
 
@@ -107,6 +107,11 @@ public class GridManager : MonoBehaviour
 
                 switch (tile_info)
                 {
+                    case "C":
+                        tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
+                        tileInstance = Instantiate(civillianTile,
+                            Vector2.zero, Quaternion.identity);
+                        break;
                     case "B":
                         tileInstance = Instantiate(tile, new Vector2(x, y), Quaternion.identity);
                         tileInstance = Instantiate(blueTile,

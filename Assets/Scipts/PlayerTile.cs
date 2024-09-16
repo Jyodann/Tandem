@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms;
 using static GridManager;
 
@@ -125,7 +126,7 @@ public class PlayerTile : GameTile
             case TileType.Exit:
                 MovePlayer(finalPos);
                 ExecuteAction(actionToExecute, finalPos);
-                print("You Win!");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 break;
             case TileType.ColouredBarrierBlue:
                 if (((ColouredBarrierTile)probedTile).isEnabled)
